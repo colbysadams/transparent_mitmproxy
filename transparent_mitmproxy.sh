@@ -107,7 +107,7 @@ fi
 
 #########################################
 # Create some files and such
-fileDirectory="$HOME/.mitmproxy_helper"
+fileDirectory=`pwd`
 backupFile="$fileDirectory/oopsies.flow"
 configFile="$fileDirectory/pf.conf"
 
@@ -180,7 +180,7 @@ fi
 
 ######################################
 # set the appropriate port forwarding rules and enable
-pfctl -f ~/pf.conf >& /dev/null 
+pfctl -f "$configFile"  
 pfctl -e
 
 
