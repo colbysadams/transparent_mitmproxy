@@ -55,7 +55,7 @@ if [[ "$devicesNumber" -gt "1" ]]; then
     # otherwise we use netcfg
     sdk=`adb shell getprop ro.build.version.sdk | tr -d '\r\n'`
     hasPhoneIP=false
-    minsdk=23
+    minsdk=22
     if [[ "$sdk" -gt "$minsdk" ]]; then
         echo "Phone found, SDK: $sdk"
         if [[ `adb shell ifconfig wlan0 | grep 'inet addr:'` =~ $ipRegex ]]; then
@@ -186,7 +186,7 @@ pfctl -e
 
 ##############################
 # actually start mitmproxy
-mitmproxy -T --host -w $backupFile
+mitmproxy -T --host 
 
 echo "##########################################################"
 echo " Cleaning up..."
