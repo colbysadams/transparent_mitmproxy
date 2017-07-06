@@ -97,12 +97,17 @@ if [[ `ifconfig $interface | grep 'inet '` =~ $ipRegex ]]; then
     hasComputerIP=true
 fi 
 
+#######################################
+# ipSameLen is the shared char of ipaddresses
 ipDiff=`printf "%s\n" "$computerIP" "$phoneIP" | sed -e 'N;s/^\(.*\).*\n\1.*$/\1/'`
-if [[ "$ipDiff" -lt "9" ]]; then
-    echo
+ipSameLen=${#ipDiff}
+if [[ "$ipSameLen" -lt "9" ]]; then
     echo "############################################################"
+    echo "ARE YOUR COMPUTER AND PHONE ON THE SAME WIFI NETWORK?"
     echo "This wont work if you're on the wrong network"
-    read -p "Are the phone and computer on the same Wi-Fi network? (ctrl-c to quit):"
+    echo "Phone IP: $phoneIP"
+    echo "Computer IP: $computerIP"
+    read -p "If you know you're on the correct network, press enter (ctrl-c to quit):"
 fi
 
 #########################################
@@ -122,7 +127,6 @@ fi
 echo
 echo
 echo "##########################################################"
-echo "ARE YOUR COMPUTER AND PHONE ON THE SAME WIFI NETWORK?"
 echo "Go to wifi settings on the phone"
 echo "##########################################################"
 echo  
