@@ -177,10 +177,8 @@ trap resetOnFinish EXIT
 
 ######################################
 #create pf.conf in user home directory if needed
-if [ ! -f "$configFile" ]; then
-    echo "rdr on $interface inet proto tcp to any port 80 -> 127.0.0.1 port 8080" > $configFile 
-    echo "rdr on $interface inet proto tcp to any port 443 -> 127.0.0.1 port 8080" >> $configFile
-fi
+echo "rdr on $interface inet proto tcp to any port 80 -> 127.0.0.1 port 8080" > $configFile 
+echo "rdr on $interface inet proto tcp to any port 443 -> 127.0.0.1 port 8080" >> $configFile
 
 ######################################
 # set the appropriate port forwarding rules and enable
@@ -198,7 +196,7 @@ echo " Cleaning up..."
 # after finishing, set variables back to original values
 # disable pf
 pfctl -d
-
+rm "$configFile"
 echo 
 echo "##########################################################"
 echo "To reset the wifi on the phone, "
