@@ -29,10 +29,17 @@ For android 7.0 and higher
 * Connect phone to usb and enable developer settings/ debugging via usb
 * The phone must first be rooted to perform the following commands
 ``adb shell ``
+
 ``su``
+
 ``cd /data/misc/user/0/cacerts-added``
+
 ``cp XXXXXXX.0 /system/etc/security/cacerts/`` (use filename of cert)
-* if command fails, enter: ``mount –o rw,remount/system`` and try again
+
+* if command fails, enter: ``mount –o rw,remount /system`` and try the previous command again
+
 ``chmod 644 /system/etc/security/cacerts/XXXXXXX.0``
-``mount –o ro,remount /system`` (if necessary)
+
+``mount –o ro,remount /system`` (if the previous remount command was necessary)
+
 * restart the phone and go to settings > security > trusted credentials and make sure you see the certificate under system
