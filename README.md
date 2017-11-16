@@ -36,7 +36,7 @@ For android 7.0 and higher
 
 ``cp XXXXXXX.0 /system/etc/security/cacerts/`` (use filename of cert)
 
-* if command fails, enter: ``mount –o rw,remount/system`` and try the previous command again
+* if command fails, enter: ``mount –o rw,remount /system`` and try the previous command again
 
 ``chmod 644 /system/etc/security/cacerts/XXXXXXX.0``
 
