@@ -144,11 +144,14 @@ echo
 echo 5. Set the DNS: 
 echo "$defaultDNS"
 echo 
-echo 6. save, open browser and download cert from mitm.it
 echo 
-echo 7. Press enter to start mitmproxy.  You should see traffic
+echo "6. Press enter to start mitmproxy (BUT READ NEXT INSTRUCTION FIRST)."
+echo "You should see HTTP traffic immediately"
+echo
+echo 7. after starting mitmproxy, open browser and download cert from mitm.it
+echo "After installing cert you should see HTTPS traffic as well"
+echo
 echo "##########################################################"
-echo 
 echo "##########################################################"
 echo
 read -p "Press enter to begin mitmproxy (ctrl-c to quit):"
@@ -179,6 +182,7 @@ trap resetOnFinish EXIT
 #create pf.conf in user home directory if needed
 echo "rdr on $interface inet proto tcp to any port 80 -> 127.0.0.1 port 8080" > $configFile 
 echo "rdr on $interface inet proto tcp to any port 443 -> 127.0.0.1 port 8080" >> $configFile
+echo "block in log on en0 proto udp to any port 443" >> $configFile
 
 ######################################
 # set the appropriate port forwarding rules and enable
