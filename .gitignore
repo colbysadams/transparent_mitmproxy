@@ -1,0 +1,5 @@
+*.flow
+tcpautodump/tcpautodump*
+*.DS_Store
+*.apk
+*.txt
