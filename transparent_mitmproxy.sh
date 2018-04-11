@@ -192,7 +192,7 @@ pfctl -e
 
 ##############################
 # actually start mitmproxy
-mitmproxy -T --host 
+mitmproxy --mode transparent --showhost --ssl-insecure
 
 echo "##########################################################"
 echo " Cleaning up..."
